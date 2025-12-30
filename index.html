@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nexora | Public Transport Crowd Indicator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Nexora</h1>
+        <p>Smart Public Transport Crowd Indicator</p>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <div class="container">
+
+        <!-- INPUT PANEL -->
+        <div class="card">
+            <h2>Check Crowd Status</h2>
+
+            <label>City</label>
+            <select id="city">
+                <option>Mumbai</option>
+            </select>
+
+            <label>Route / Station</label>
+            <select id="route">
+                <option>Andheri</option>
+                <option>Borivali</option>
+                <option>Dadar</option>
+                <option>Churchgate</option>
+            </select>
+
+            <label>Time</label>
+            <select id="time">
+                <option value="off">Off Peak</option>
+                <option value="peak">Peak Hour</option>
+            </select>
+
+            <label>Weather</label>
+            <select id="weather">
+                <option value="clear">Clear</option>
+                <option value="rain">Rainy</option>
+            </select>
+
+            <label>Day Type</label>
+            <select id="day">
+                <option value="weekday">Weekday</option>
+                <option value="holiday">Holiday</option>
+            </select>
+
+            <button onclick="predictCrowd()">Predict Crowd</button>
+        </div>
+
+        <!-- RESULT PANEL -->
+        <div class="card result">
+            <h2>Crowd Status</h2>
+            <div id="crowdBox" class="low">
+                <h3 id="crowdText">LOW</h3>
+            </div>
+            <p id="suggestion">No congestion expected.</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© Team Nexora | Smart City Hackathon</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
