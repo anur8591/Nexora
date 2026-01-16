@@ -144,95 +144,6 @@ body {
   display: block;
 }
 
-.nav-login-btn {
-  padding: 8px 18px;
-  border-radius: 10px;
-  border: 1px solid rgba(0,229,255,0.6);
-  background: transparent;
-  color: #fff;
-  font-size: 0.95rem;
-  cursor: pointer;
-
-  transition: all 0.3s ease;
-}
-
-.nav-login-btn:hover {
-  background: linear-gradient(135deg, #6a5cff, #00e5ff);
-  box-shadow: 0 0 25px rgba(0,229,255,0.6);
-  transform: translateY(-2px);
-}
-
-/* ================= LOGIN MODAL ================= */
-
-.login-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(14px);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-.login-box {
-  width: 360px;
-  padding: 30px;
-  border-radius: 18px;
-  background: radial-gradient(circle at top, #0b1020, #05070d);
-  box-shadow: 0 0 60px rgba(0,229,255,0.35);
-  text-align: center;
-  position: relative;
-}
-
-.login-box h2 {
-  margin-bottom: 8px;
-}
-
-.login-box p {
-  font-size: 0.9rem;
-  color: #cfd3ff;
-  margin-bottom: 22px;
-}
-
-.google-login-btn {
-  width: 100%;
-  padding: 12px;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-
-  background: #fff;
-  color: #000;
-  font-weight: 600;
-  font-size: 0.95rem;
-
-  transition: all 0.3s ease;
-}
-
-.google-login-btn img {
-  width: 20px;
-}
-
-.google-login-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 30px rgba(255,255,255,0.6);
-}
-
-.login-note {
-  display: block;
-  margin-top: 16px;
-  font-size: 0.75rem;
-  color: #9aa0ff;
-}
-
-
-
 /* ================= HERO ================= */
 .hero {
   position: relative;
@@ -240,46 +151,35 @@ body {
   overflow: hidden;
 }
 
-/* Background Video */
 .bg-video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-
-  /* 🔥 Darker & cinematic */
-  opacity: 0.22;
-  filter: blur(1.2px) brightness(0.55) contrast(1.15);
-  transform: scale(1.08);
-
-  animation: slowZoom 26s ease-in-out infinite alternate;
+  opacity: 0.25;
+  filter: blur(1px) brightness(0.7);
+  animation: slowZoom 25s infinite alternate;
 }
 
-/* Overlay (Improved) */
+/* Overlay */
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 1;
-
-  /* 🔥 Better darkness + depth */
   background: linear-gradient(
-    120deg,
-    rgba(5,7,13,0.98) 0%,
-    rgba(5,7,13,0.85) 40%,
-    rgba(5,7,13,0.65) 65%,
-    rgba(5,7,13,0.9) 100%
+    90deg,
+    rgba(5,7,13,0.95),
+    rgba(5,7,13,0.6)
   );
+  z-index: 1;
 }
 
-/* Content */
 .hero-inner {
   position: relative;
   z-index: 2;
   height: 100%;
   padding: 90px 8% 0;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -290,20 +190,13 @@ body {
 .hero-content h1 {
   font-size: 3.2rem;
   margin-bottom: 16px;
-
-  /* 🔥 Clear text glow */
-  text-shadow:
-    0 0 20px rgba(0,229,255,0.35),
-    0 0 45px rgba(106,92,255,0.25);
+  text-shadow: 0 0 25px rgba(0,229,255,0.45);
 }
 
 .hero-content p {
   color: var(--text-light);
   margin-bottom: 30px;
-  max-width: 520px;
-  line-height: 1.6;
 }
-
 /* ================= BUTTONS ================= */
 
 .btn-primary,
@@ -366,7 +259,7 @@ body {
 /* ===== SECONDARY BUTTON ===== */
 .btn-secondary {
   background: transparent;
-  color: var(--text-light);
+  color: var(--text-white);
   border: 1px solid var(--primary);
   box-shadow: inset 0 0 0 rgba(34,245,161,0);
 }
@@ -380,70 +273,12 @@ body {
 
 
 /* Image */
-.hero-image {
-  position: relative;
-  max-width: 680px;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 0 60px rgba(0,229,255,0.25);
-}
-
 .hero-image img {
-  width: 100%;
-  display: block;
-  border-radius: inherit;
+  width: 900px;
+  max-width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 0 45px rgba(0,229,255,0.35);
 }
-
-/* Scan ray effect */
-
-.scan-ray {
-  position: absolute;
-  left: 0;
-  top: -20%;
-  width: 100%;
-  height: 120px;
-
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(0,229,255,0.45),
-    transparent
-  );
-
-  filter: blur(2px);
-  opacity: 0.8;
-
-  animation: scanMove 4.5s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes scanMove {
-  0% {
-    top: -25%;
-  }
-  100% {
-    top: 120%;
-  }
-}
-
-.hero-image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      rgba(0,229,255,0.05),
-      rgba(0,229,255,0.05) 1px,
-      transparent 1px,
-      transparent 6px
-    );
-
-  opacity: 0.3;
-  pointer-events: none;
-}
-
 
 /* ================= SECOND SLIDE ================= */
 .second-slide {
@@ -1023,6 +858,163 @@ body {
   .how-visual {
     order: -1;
     margin-bottom: 40px;
+  }
+}
+
+
+/* Initial hidden state (for scroll animation) */
+.step-card {
+  position: relative;
+  padding: 26px 28px;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 24, 48, 0.85),
+    rgba(10, 14, 30, 0.85)
+  );
+  border-radius: 16px;
+  border: 1px solid rgba(106,92,255,0.25);
+  backdrop-filter: blur(14px);
+
+  opacity: 0;
+  transform: translateY(50px) scale(0.98);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease,
+    box-shadow 0.5s ease,
+    border-color 0.5s ease;
+}
+
+/* Reveal on scroll (JS adds .reveal) */
+.step-card.reveal {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Glow border animation layer */
+.step-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0,198,255,0.25),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+/* Hover effects */
+.step-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow:
+    0 20px 50px rgba(0,198,255,0.25),
+    0 0 35px rgba(106,92,255,0.35);
+  border-color: rgba(0,198,255,0.6);
+}
+
+.step-card:hover::before {
+  opacity: 1;
+}
+
+/* ---------- Step content ---------- */
+.step-number {
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: #00c6ff;
+  opacity: 0.9;
+}
+
+.step-card h3 {
+  margin-top: 10px;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.step-card p {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #cfd3ff;
+}
+
+/* ---------- CTA ---------- */
+.how-cta {
+  margin-top: 34px;
+  width: fit-content;
+  padding: 14px 28px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #6a5cff, #00c6ff);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(0,198,255,0.45);
+  transition: all 0.35s ease;
+}
+
+.how-cta:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 0 55px rgba(0,198,255,0.8);
+}
+
+/* ---------- Right Visual ---------- */
+.how-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.visual-card {
+  position: relative;
+  width: 360px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow:
+    0 40px 90px rgba(0,0,0,0.85),
+    0 0 40px rgba(0,198,255,0.15);
+}
+
+.visual-card img {
+  width: 100%;
+  display: block;
+}
+
+/* Scanning line animation */
+.scan-line {
+  position: absolute;
+  left: -20%;
+  right: -20%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #00c6ff,
+    transparent
+  );
+  animation: scan 3.5s linear infinite;
+  opacity: 0.9;
+}
+
+@keyframes scan {
+  from { top: -5%; }
+  to { top: 105%; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .how-container {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .how-visual {
+    order: -1;
   }
 }
 
