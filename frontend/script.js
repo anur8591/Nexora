@@ -1,11 +1,3 @@
-/* ================= SCROLL TO TOOLS ================= */
-function scrollToTools() {
-  const toolsSection = document.getElementById('tools');
-  if (toolsSection) {
-    toolsSection.scrollIntoView({ behavior: 'smooth' });
-  }
-}
-
 /* ================= SCROLL REVEAL (2nd SLIDE CARDS) ================= */
 const featureCards = document.querySelectorAll(".card");
 
@@ -24,24 +16,6 @@ if (featureCards.length > 0) {
 
   featureCards.forEach(card => observer.observe(card));
 }
-
-/* ================= LOGIN MODAL LOGIC ================= */
-
-function openLoginModal() {
-  document.getElementById("loginModal").style.display = "flex";
-}
-
-function closeLoginModal() {
-  document.getElementById("loginModal").style.display = "none";
-}
-
-/* ================= GOOGLE LOGIN ================= */
-
-function continueWithGoogle() {
-
-  alert("Redirecting to Google Sign-In...");
-}
-
 
 /* ================= MODAL ================= */
 let selectedType = "image";
