@@ -128,3 +128,310 @@
     display: block;
   }
   
+  /* ================= HERO ================= */
+  .hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .bg-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.25;
+    filter: blur(1px) brightness(0.7);
+    animation: slowZoom 25s infinite alternate;
+  }
+  
+  /* Overlay */
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(5,7,13,0.95),
+      rgba(5,7,13,0.6)
+    );
+    z-index: 1;
+  }
+  
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    padding: 90px 8% 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+  }
+  
+  /* Text */
+  .hero-content h1 {
+    font-size: 3.2rem;
+    margin-bottom: 16px;
+    text-shadow: 0 0 25px rgba(0,229,255,0.45);
+  }
+  
+  .hero-content p {
+    color: var(--text-light);
+    margin-bottom: 30px;
+  }
+  
+  /* Buttons */
+  .btn-primary,
+  .btn-secondary {
+    padding: 14px 26px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border: none;
+    box-shadow: 0 0 20px rgba(0,229,255,0.5);
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-3px) scale(1.06);
+    box-shadow: 0 0 35px var(--secondary);
+  }
+  
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--secondary);
+    color: #fff;
+  }
+  
+  .btn-secondary:hover {
+    background: rgba(0,229,255,0.15);
+  }
+  
+  /* Image */
+  .hero-image img {
+    width: 700px;
+    max-width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 0 45px rgba(0,229,255,0.35);
+  }
+  
+  /* ================= SECOND SLIDE ================= */
+  .second-slide {
+    padding: 100px 0;
+  }
+  
+  .sec-h1 h1 {
+    text-align: center;
+    font-size: 2.6rem;
+    margin-bottom: 50px;
+    text-shadow: 0 0 20px rgba(106,92,255,0.5);
+  }
+  
+  /* Grid */
+  .card-grid {
+    display: flex;
+    justify-content: center;
+    gap: 26px;
+    flex-wrap: wrap;
+  }
+  
+  /* Card */
+  .card {
+    width: 300px;
+    height: 360px;
+    background: linear-gradient(180deg, #0b1024, #05070d);
+    border-radius: 18px;
+    padding: 22px;
+    border: 1px solid rgba(0,229,255,0.3);
+    box-shadow: inset 0 0 25px rgba(0,229,255,0.05);
+    transition: 0.4s;
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  
+  .card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow:
+      0 0 35px rgba(0,229,255,0.45),
+      inset 0 0 30px rgba(0,229,255,0.15);
+  }
+  
+  /* Card content */
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .card-content p {
+    color: var(--text-light);
+  }
+  
+  /* Inputs */
+  .text-input,
+  .link-input {
+    padding: 12px;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.45);
+    border: 1px solid rgba(0,229,255,0.3);
+    color: #fff;
+  }
+  
+  .text-input:focus,
+  .link-input:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgba(0,229,255,0.5);
+  }
+  
+  /* Buttons inside cards */
+  .analyze-btn,
+  .open-modal-btn {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 18px rgba(0,229,255,0.4);
+  }
+  
+  .analyze-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px var(--secondary);
+  }
+  
+  /* Result text */
+  .text-result,
+  .link-result,
+  .batch-result {
+    display: none;
+    font-size: 0.9rem;
+    color: var(--text-light);
+  }
+  
+  /* ================= MODAL ================= */
+  /* ================= MODAL FIX ================= */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+  
+  .modal-box {
+    width: 520px;
+    max-width: 90%;
+    background: linear-gradient(180deg, #0b1024, #05070d);
+    border-radius: 18px;
+    padding: 32px;
+    box-shadow: 0 0 50px rgba(0,229,255,0.45);
+    position: relative;
+    animation: modalPop 0.4s ease;
+  }
+  
+  @keyframes modalPop {
+    from {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .modal-title {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .type-selector {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  
+  .type-btn {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid var(--secondary);
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .type-btn.active,
+  .type-btn:hover {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    box-shadow: 0 0 20px rgba(0,229,255,0.6);
+  }
+  
+  .upload-section {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+  }
+  
+  /* Choose and Upload buttons */
+  .choose-btn {
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff;
+    font-size: 0.95rem;
+    box-shadow: 0 0 18px rgba(0,229,255,0.45);
+    transition: 0.3s;
+  }
+  
+  .upload-btn {
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff;
+    box-shadow: 0 0 18px rgba(0,229,255,0.4);
+  }
+  
+  /* Hover effects */
+  .choose-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 0 30px rgba(0,229,255,0.75);
+  }
+  
+  .upload-btn:hover {
+    box-shadow: 0 0 30px rgba(0,229,255,0.7);
+  }
+  
+  .result-box {
+    display: none;
+    margin-top: 22px;
+    padding: 14px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.08);
+    text-align: center;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.4rem;
+    cursor: pointer;
+  }
