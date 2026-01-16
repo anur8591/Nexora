@@ -17,6 +17,24 @@ if (featureCards.length > 0) {
   featureCards.forEach(card => observer.observe(card));
 }
 
+/* ================= LOGIN MODAL LOGIC ================= */
+
+function openLoginModal() {
+  document.getElementById("loginModal").style.display = "flex";
+}
+
+function closeLoginModal() {
+  document.getElementById("loginModal").style.display = "none";
+}
+
+/* ================= GOOGLE LOGIN ================= */
+
+function continueWithGoogle() {
+
+  alert("Redirecting to Google Sign-In...");
+}
+
+
 /* ================= MODAL ================= */
 let selectedType = "image";
 
@@ -33,12 +51,60 @@ function closeModal() {
   if (modal) modal.style.display = "none";
 }
 
+/* ================= TYPE SELECTION ================= */
 function selectType(btn, type) {
   selectedType = type;
-  document.querySelectorAll(".type-btn").forEach(b => b.classList.remove("active"));
+
+  document.querySelectorAll(".type-btn").forEach(b =>
+    b.classList.remove("active")
+  );
   btn.classList.add("active");
+
+  // Reset file on type change (UX improvement)
+  resetFilePreview();
 }
 
+/* ================= FILE PREVIEW ================= */
+function handleFileSelect(input) {
+  const preview = document.getElementById("filePreview");
+  const fileName = document.getElementById("fileName");
+  const fileType = document.getElementById("fileType");
+  const fileIcon = document.getElementById("fileIcon");
+
+  if (!input.files || !input.files[0]) return;
+
+  const file = input.files[0];
+  const type = file.type;
+
+  fileName.textContent = file.name;
+  fileType.textContent =
+    `${type || "Unknown type"} • ${(file.size / 1024 / 1024).toFixed(2)} MB`;
+
+  if (type.startsWith("image")) fileIcon.textContent = "🖼️";
+  else if (type.startsWith("video")) fileIcon.textContent = "🎥";
+  else if (type.startsWith("audio")) fileIcon.textContent = "🎧";
+  else fileIcon.textContent = "📄";
+
+  preview.classList.add("show");
+}
+
+/* ================= RESET PREVIEW ================= */
+function resetFilePreview() {
+  const input = document.getElementById("mediaInput");
+  const preview = document.getElementById("filePreview");
+  const fileName = document.getElementById("fileName");
+  const fileType = document.getElementById("fileType");
+  const fileIcon = document.getElementById("fileIcon");
+
+  if (input) input.value = "";
+  if (preview) preview.classList.remove("show");
+
+  if (fileName) fileName.textContent = "No file selected";
+  if (fileType) fileType.textContent = "";
+  if (fileIcon) fileIcon.textContent = "📄";
+}
+
+/* ================= UPLOAD (DEMO ANALYSIS) ================= */
 function uploadMedia() {
   const input = document.getElementById("mediaInput");
   const box = document.getElementById("resultBox");
@@ -47,17 +113,19 @@ function uploadMedia() {
   if (!input || !box || !text) return;
 
   if (!input.files.length) {
-    alert("Please select a file");
+    alert("Please select a file first");
     return;
   }
 
   box.style.display = "block";
-  text.innerText = `Analyzing ${selectedType}...`;
+  text.innerText = `Analyzing ${selectedType} file...`;
 
+  // Demo delay
   setTimeout(() => {
     text.innerText = "Deepfake probability: 72% (demo)";
   }, 2000);
 }
+
 
 /* ================= CARD ACTIONS ================= */
 function analyzeText() {
@@ -84,17 +152,66 @@ function analyzeLink() {
   }, 1800);
 }
 
-function analyzeBatch() {
-  const r = document.getElementById("batchResult");
-  if (!r) return;
+/* ================= BATCH FILE HANDLING ================= */
 
-  r.style.display = "block";
-  r.innerText = "Batch analysis started...";
+const batchInput = document.getElementById("batchInput");
+const batchResult = document.getElementById("batchResult");
+
+// Create preview container dynamically
+const batchPreview = document.createElement("div");
+batchPreview.className = "batch-preview";
+
+const batchCount = document.createElement("p");
+batchCount.className = "batch-count";
+
+const batchFileList = document.createElement("ul");
+batchFileList.className = "batch-file-list";
+
+batchPreview.appendChild(batchCount);
+batchPreview.appendChild(batchFileList);
+
+// Attach preview below result
+batchResult.parentElement.insertBefore(batchPreview, batchResult);
+
+// Hide initially
+batchPreview.style.display = "none";
+
+/* -------- On File Select -------- */
+batchInput.addEventListener("change", () => {
+  batchFileList.innerHTML = "";
+
+  if (batchInput.files.length === 0) {
+    batchPreview.style.display = "none";
+    batchCount.innerText = "No files selected";
+    return;
+  }
+
+  batchPreview.style.display = "block";
+  batchCount.innerText = `${batchInput.files.length} file(s) selected`;
+
+  Array.from(batchInput.files).forEach(file => {
+    const li = document.createElement("li");
+    li.textContent = file.name;
+    batchFileList.appendChild(li);
+  });
+});
+
+/* -------- Start Batch Analysis -------- */
+function analyzeBatch() {
+  if (!batchInput.files.length) {
+    alert("Please select files before starting batch analysis.");
+    return;
+  }
+
+  batchResult.style.display = "block";
+  batchResult.innerText = "Batch analysis in progress...";
 
   setTimeout(() => {
-    r.innerText = "Multiple files flagged as suspicious (demo)";
-  }, 2200);
+    batchResult.innerText =
+      `${batchInput.files.length} file(s) flagged as suspicious (demo)`;
+  }, 2000);
 }
+
 
 /* ================= 3rd SLIDE SCROLL HIGHLIGHT ================= */
 const scenarioWrapper = document.querySelector(".scenario-wrapper");
@@ -115,3 +232,76 @@ if (scenarioWrapper && scenarioCards.length > 0) {
     });
   });
 }
+/* ================= STAGGERED SCROLL REVEAL ================= */
+
+const steps = document.querySelectorAll(".step-card");
+
+const stepObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        // stagger effect
+        setTimeout(() => {
+          entry.target.classList.add("reveal");
+        }, index * 200); // 200ms delay between cards
+
+        stepObserver.unobserve(entry.target); // animate once
+      }
+    });
+  },
+  {
+    threshold: 0.3,
+  }
+);
+
+steps.forEach(step => stepObserver.observe(step));
+
+
+const trustCards = document.querySelectorAll(".trust-card");
+
+const trustObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add("reveal");
+        }, index * 200);
+        trustObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.25 }
+);
+
+trustCards.forEach(card => trustObserver.observe(card));
+
+const ctaContent = document.querySelector(".cta-content");
+
+const ctaObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("reveal");
+        ctaObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.4 }
+);
+
+ctaObserver.observe(ctaContent);
+
+const footerItems = document.querySelectorAll(".footer-container > div");
+
+const footerObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  },
+  { threshold: 0.2 }
+);
+
+footerItems.forEach(item => footerObserver.observe(item));
