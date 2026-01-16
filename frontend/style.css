@@ -78,6 +78,25 @@ body {
 }
 
 /* Menu */
+.nav-login-btn {
+  padding: 8px 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,229,255,0.6);
+  background: transparent;
+  color: #fff;
+  font-size: 0.95rem;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.nav-login-btn:hover {
+  background: linear-gradient(135deg, #6a5cff, #00e5ff);
+  box-shadow: 0 0 25px rgba(0,229,255,0.6);
+  transform: translateY(-2px);
+}
+
+
 .nav-right {
   list-style: none;
   display: flex;
@@ -142,6 +161,78 @@ body {
 
 .dropdown:hover .dropdown-menu {
   display: block;
+}
+
+
+
+
+/* ================= LOGIN MODAL ================= */
+
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(14px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.login-box {
+  width: 360px;
+  padding: 30px;
+  border-radius: 18px;
+  background: radial-gradient(circle at top, #0b1020, #05070d);
+  box-shadow: 0 0 60px rgba(0,229,255,0.35);
+  text-align: center;
+  position: relative;
+}
+
+.login-box h2 {
+  margin-bottom: 8px;
+}
+
+.login-box p {
+  font-size: 0.9rem;
+  color: #cfd3ff;
+  margin-bottom: 22px;
+}
+
+.google-login-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  background: #fff;
+  color: #000;
+  font-weight: 600;
+  font-size: 0.95rem;
+
+  transition: all 0.3s ease;
+}
+
+.google-login-btn img {
+  width: 20px;
+}
+
+.google-login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(255,255,255,0.6);
+}
+
+.login-note {
+  display: block;
+  margin-top: 16px;
+  font-size: 0.75rem;
+  color: #9aa0ff;
 }
 
 /* ================= HERO ================= */
