@@ -34,6 +34,13 @@
 
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
+
+      <!-- LOGIN BUTTON -->
+  <li>
+    <button class="nav-login-btn" onclick="openLoginModal()">
+  Login
+</button>
+
   </ul>
 </nav>
 
@@ -77,65 +84,91 @@
   </div>
 
   <div class="card-grid">
+<!-- IMAGE -->
+<div class="card" id="image-detection">
+  <div class="card-content">
+    <h2>Media Verification</h2>
+    <p class="card-desc">
+      Upload any image, video, audio, or document to instantly check
+      whether it is real or manipulated. Results are fast and easy to understand.
+    </p>
+    <button class="open-modal-btn" onclick="openModal()">
+      Start Verification
+    </button>
+  </div>
+</div>
 
-    <!-- IMAGE -->
-    <div class="card" id="image-detection">
-      <div class="card-content">
-        <h2>Media Verification</h2>
-        <p>
-          Upload images, videos, audio, or documents such as PDF, DOC,
-          PNG, JPG, and JPEG to verify authenticity.
-        </p>
-        <button class="open-modal-btn" onclick="openModal()">Start Verification</button>
-      </div>
-    </div>
+<!-- TEXT -->
+<div class="card" id="video-detection">
+  <div class="card-content">
+    <h2>Message & Content Verification</h2>
+    <p class="card-desc">
+      Paste any message, email, or text to find out if it was written
+      by a human or generated using AI.
+    </p>
 
-    <!-- TEXT -->
-    <div class="card" id="video-detection">
-      <div class="card-content">
-        <h2>Message & Content Verification</h2>
-        <p>Analyze written messages and detect AI-generated content.</p>
+    <textarea
+      class="text-input"
+      id="textInput"
+      placeholder="Paste your message or content here..."
+    ></textarea>
 
-        <textarea class="text-input" id="textInput"
-          placeholder="Paste content here..."></textarea>
+    <button class="analyze-btn" onclick="analyzeText()">
+      Analyze Content
+    </button>
+    <p class="text-result" id="textResult"></p>
+  </div>
+</div>
 
-        <button class="analyze-btn" onclick="analyzeText()">Analyze Content</button>
-        <p class="text-result" id="textResult"></p>
-      </div>
-    </div>
+<!-- LINK -->
+<div class="card" id="voice-detection">
+  <div class="card-content">
+    <h2>Web & Link Safety</h2>
+    <p class="card-desc">
+      Enter a website link to check for phishing, fake pages,
+      or deepfake-related security risks before you open or share it.
+    </p>
 
-    <!-- LINK -->
-    <div class="card" id="voice-detection">
-      <div class="card-content">
-        <h2>Web & Link Safety</h2>
-        <p>
-          Scan websites for phishing, fake content, and deepfake risks.
-        </p>
+    <input
+      type="url"
+      class="link-input"
+      id="linkInput"
+      placeholder="Paste website link here..."
+    />
 
-        <input type="url" class="link-input" id="linkInput"
-          placeholder="Paste website link here">
+    <button class="analyze-btn" onclick="analyzeLink()">
+      Analyze Link
+    </button>
+    <p class="link-result" id="linkResult"></p>
+  </div>
+</div>
 
-        <button class="analyze-btn" onclick="analyzeLink()">Analyze Link</button>
-        <p class="link-result" id="linkResult"></p>
-      </div>
-    </div>
+<!-- BATCH -->
+<div class="card">
+  <div class="card-content">
+    <h2>Application & File</h2>
+    <p class="card-desc">
+      Upload multiple files at once to quickly detect suspicious
+      or manipulated content. Ideal for bulk analysis.
+    </p>
 
-    <!-- BATCH -->
-    <div class="card">
-      <div class="card-content">
-        <h2>Application & File</h2>
-        <p>
-          Perform batch analysis on multiple files to detect manipulation at scale.
-        </p>
+    <input type="file" id="batchInput" multiple hidden>
 
-        <input type="file" id="batchInput" multiple hidden>
-        <button class="choose-btn"
-          onclick="document.getElementById('batchInput').click()">Choose Files</button>
+    <button
+      class="choose-btn"
+      onclick="document.getElementById('batchInput').click()"
+    >
+      Choose Files
+    </button>
 
-        <button class="analyze-btn" onclick="analyzeBatch()">Start Batch Analysis</button>
-        <p class="batch-result" id="batchResult"></p>
-      </div>
-    </div>
+    <button class="analyze-btn" onclick="analyzeBatch()">
+      Start Batch Analysis
+    </button>
+
+    <p class="batch-result" id="batchResult"></p>
+  </div>
+</div>
+
 
   </div>
 </section>
@@ -433,6 +466,31 @@
     © 2026 UNMASK  | All rights reserved.
   </div>
 </footer>
+
+
+<!-- ================= LOGIN MODAL ================= -->
+<div class="login-overlay" id="loginModal">
+  <div class="login-box">
+
+    <!-- Close -->
+    <button class="close-btn" onclick="closeLoginModal()">✕</button>
+
+    <h2>Sign in to UNMASK</h2>
+    <p>Continue securely using your Google account</p>
+
+    <!-- GOOGLE BUTTON -->
+    <button class="google-login-btn" onclick="continueWithGoogle()">
+      <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
+      Continue with Google
+    </button>
+
+    <small class="login-note">
+      We don’t store passwords. Secure OAuth login.
+    </small>
+
+  </div>
+</div>
+
 
 <!-- ================= JS ================= -->
 <script src="script.js"></script>
