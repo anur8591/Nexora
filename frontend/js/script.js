@@ -1,3 +1,11 @@
+/* ================= SCROLL TO TOOLS ================= */
+function scrollToTools() {
+  const toolsSection = document.getElementById('tools');
+  if (toolsSection) {
+    toolsSection.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
 /* ================= SCROLL REVEAL (2nd SLIDE CARDS) ================= */
 const featureCards = document.querySelectorAll(".card");
 
