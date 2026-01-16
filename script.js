@@ -95,3 +95,23 @@ function analyzeBatch() {
     r.innerText = "Multiple files flagged as suspicious (demo)";
   }, 2200);
 }
+
+/* ================= 3rd SLIDE SCROLL HIGHLIGHT ================= */
+const scenarioWrapper = document.querySelector(".scenario-wrapper");
+const scenarioCards = document.querySelectorAll(".scenario-card");
+
+if (scenarioWrapper && scenarioCards.length > 0) {
+  scenarioWrapper.addEventListener("scroll", () => {
+    const center = scenarioWrapper.scrollLeft + scenarioWrapper.offsetWidth / 2;
+
+    scenarioCards.forEach(card => {
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+
+      if (Math.abs(center - cardCenter) < card.offsetWidth / 2) {
+        card.classList.add("active");
+      } else {
+        card.classList.remove("active");
+      }
+    });
+  });
+}
