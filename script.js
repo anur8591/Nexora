@@ -1,32 +1,21 @@
-function predictCrowd() {
-    const time = document.getElementById("time").value;
-    const weather = document.getElementById("weather").value;
-    const day = document.getElementById("day").value;
 
-    let score = 0;
 
-    if (time === "peak") score += 40;
-    if (weather === "rain") score += 30;
-    if (day === "holiday") score += 30;
+/* ================= SCROLL REVEAL (2nd SLIDE CARDS) ================= */
+const featureCards = document.querySelectorAll(".card");
 
-    let crowdLevel = "LOW";
-    let boxClass = "low";
-    let suggestion = "No congestion expected.";
+if (featureCards.length > 0) {
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0)";
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
 
-    if (score >= 70) {
-        crowdLevel = "HIGH";
-        boxClass = "high";
-        suggestion = "High congestion expected. Deploy extra buses.";
-    } else if (score >= 40) {
-        crowdLevel = "MEDIUM";
-        boxClass = "medium";
-        suggestion = "Moderate crowd. Monitor closely.";
-    }
-
-    const crowdBox = document.getElementById("crowdBox");
-    const crowdText = document.getElementById("crowdText");
-
-    crowdBox.className = boxClass;
-    crowdText.innerText = crowdLevel;
-    document.getElementById("suggestion").innerText = suggestion;
+  featureCards.forEach(card => observer.observe(card));
 }
+
