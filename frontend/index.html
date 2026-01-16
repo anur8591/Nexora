@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nexora – Deepfake Detection Platform</title>
-  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
@@ -14,7 +14,7 @@
 <nav class="navbar">
   <div class="nav-left">
     <div class="logo">
-  <!-- Logo image removed as logo.png does not exist -->
+  <img src="logo.png" alt="Nexora Logo">
 </div>
 
     <span class="site-name">UNMASK</span>
@@ -34,29 +34,15 @@
 
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
-
-     <!-- LOGIN BUTTON -->
-  <li>
-    <button class="nav-login-btn" onclick="openLoginModal()">
-  Login
-</button>
-
-  </li>
   </ul>
 </nav>
 
 <!-- ================= HERO ================= -->
 <section class="hero" id="home">
-
-  <!-- Background Video -->
   <video class="bg-video" autoplay muted loop playsinline>
-    <source src="../image/bggift.mp4" type="video/mp4">
+    <source src="bggift.mp4" type="video/mp4">
   </video>
 
-  <!-- 🔥 DARK OVERLAY (NEW ADD) -->
-  <div class="hero-overlay"></div>
-
-  <!-- Content -->
   <div class="hero-inner">
     <div class="hero-content">
       <h1>AI Deepfake Detection Online Free</h1>
@@ -66,24 +52,22 @@
       </p>
 
       <div class="hero-buttons">
-        <button class="btn-primary" onclick="openModal()">
-          Analyze Media
-        </button>
+  <button class="btn-primary" onclick="openModal()">
+    Analyze Media
+  </button>
 
-        <button class="btn-secondary" onclick="scrollToTools()">
-          View Demo
-        </button>
-      </div>
+  <button class="btn-secondary" onclick="scrollToTools()">
+    View Demo
+  </button>
+</div>
+
     </div>
 
     <div class="hero-image">
-  <img src="../image/Deepfake.png" alt="Deepfake Detection" />
-  <span class="scan-ray"></span>
-</div>
+      <img src="Deepfake.png" alt="Deepfake Detection" />
+    </div>
   </div>
-
 </section>
-
 
 <!-- ================= TOOLS ================= -->
 <section class="second-slide" id="tools">
@@ -224,25 +208,25 @@
 
   <div class="scenario-wrapper">
     <div class="scenario-card">
-      <img src="../image/img2.png">
+      <img src="img2.png">
       <h3>Social Media Profile</h3>
       <p class="risk high">89% Deepfake</p>
     </div>
 
     <div class="scenario-card">
-      <img src="../image/img3.png">
+      <img src="img3.png">
       <h3>Parade Images</h3>
       <p class="risk medium">45% Deepfake</p>
     </div>
 
     <div class="scenario-card">
-      <img src="../image/img4.png">
+      <img src="img4.png">
       <h3>Financial Document</h3>
       <p class="risk low">31% Deepfake</p>
     </div>
 
     <div class="scenario-card">
-      <img src="../image/img5.png">
+      <img src="img5.png">
       <h3>Video Call</h3>
       <p class="risk low">31% Deepfake</p>
     </div>
@@ -315,7 +299,7 @@
     <!-- RIGHT VISUAL -->
     <div class="how-visual">
       <div class="visual-card">
-        <img src="../image/deep face.png" alt="AI Detection Preview">
+        <img src="deep face.png" alt="AI Detection Preview">
         <div class="scan-line"></div>
       </div>
     </div>
@@ -429,45 +413,29 @@
       <a href="mailto:hello@nexora.com">hello@nexora.com</a>
 
       <div class="footer-icons">
-        <span>✉️</span>
-        <span>🌐</span>
-        <span>🔒</span>
-      </div>
-    </div>
+  <a href="princemaurya756@gmail.com" aria-label="Email">
+    ✉️
+  </a>
+
+  <a href="https://www.nexora.com" target="_blank" aria-label="Website">
+    🌐
+  </a>
+
+  <a href="/privacy-policy.html" aria-label="Privacy Policy">
+    🔒
+  </a>
+</div>
+
 
   </div>
 
   <div class="footer-bottom">
-    © 2026 Nexora. All rights reserved.
+    © 2026 UNMASK  | All rights reserved.
   </div>
 </footer>
 
-<!-- ================= LOGIN MODAL ================= -->
-<div class="login-overlay" id="loginModal">
-  <div class="login-box">
-
-    <!-- Close -->
-    <button class="close-btn" onclick="closeLoginModal()">✕</button>
-
-    <h2>Sign in to UNMASK</h2>
-    <p>Continue securely using your Google account</p>
-
-    <!-- GOOGLE BUTTON -->
-    <button class="google-login-btn" onclick="continueWithGoogle()">
-      <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
-      Continue with Google
-    </button>
-
-    <small class="login-note">
-      We don’t store passwords. Secure OAuth login.
-    </small>
-
-  </div>
-</div>
-
-
 <!-- ================= JS ================= -->
-<script src="../js/script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
