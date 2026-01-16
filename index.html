@@ -1,270 +1,473 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Nexora | Public Transport Crowd Indicator</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexora – Deepfake Detection Platform</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    
+
+
 <!-- ================= NAVBAR ================= -->
 <nav class="navbar">
-    <div class="nav-left">
-      <div class="logo"></div>
-      <span class="site-name">Nexora</span>
-    </div>
-  
-    <ul class="nav-right">
-      <li><a href="#home">Home</a></li>
-  
-      <li class="dropdown">
-        <a href="#tools">Tools</a>
-        <ul class="dropdown-menu">
-          <li><a href="#image-detection">Image Detection</a></li>
-          <li><a href="#video-detection">Video Detection</a></li>
-          <li><a href="#voice-detection">Voice Detection</a></li>
-        </ul>
-      </li>
-  
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
- <!-- ================= HERO ================= -->
-<section class="hero" id="home">
-    <video class="bg-video" autoplay muted loop playsinline>
-      <source src="bggift.mp4" type="video/mp4">
-    </video>
-  
-    <div class="hero-inner">
-      <div class="hero-content">
-        <h1>AI Deepfake Detection Online Free</h1>
-        <p>
-          Detect manipulated images, videos, audio, and documents using
-          Nexora’s AI-powered authenticity analyzer.
-        </p>
-  
-        <div class="hero-buttons">
-          <button class="btn-primary">Analyze Media</button>
-          <button class="btn-secondary">View Demo</button>
-        </div>
-      </div>
-  
-      <div class="hero-image">
-        <img src="Deepfake.png" alt="Deepfake Detection" />
-      </div>
-    </div>
-  </section>
-  
-  <!-- ================= TOOLS ================= -->
-  <section class="second-slide" id="tools">
-  
-    <div class="sec-h1">
-      <h1>Deepfake Detection Tools</h1>
-    </div>
-  
-    <div class="card-grid">
-  
-      <!-- IMAGE -->
-      <div class="card" id="image-detection">
-        <div class="card-content">
-          <h2>Media Verification</h2>
-          <p>
-            Upload images, videos, audio, or documents such as PDF, DOC,
-            PNG, JPG, and JPEG to verify authenticity.
-          </p>
-          <button class="open-modal-btn" onclick="openModal()">Start Verification</button>
-        </div>
-      </div>
-  
-      <!-- TEXT -->
-      <div class="card" id="video-detection">
-        <div class="card-content">
-          <h2>Message & Content Verification</h2>
-          <p>Analyze written messages and detect AI-generated content.</p>
-  
-          <textarea class="text-input" id="textInput"
-            placeholder="Paste content here..."></textarea>
-  
-          <button class="analyze-btn" onclick="analyzeText()">Analyze Content</button>
-          <p class="text-result" id="textResult"></p>
-        </div>
-      </div>
-  
-      <!-- LINK -->
-      <div class="card" id="voice-detection">
-        <div class="card-content">
-          <h2>Web & Link Safety</h2>
-          <p>
-            Scan websites for phishing, fake content, and deepfake risks.
-          </p>
-  
-          <input type="url" class="link-input" id="linkInput"
-            placeholder="Paste website link here">
-  
-          <button class="analyze-btn" onclick="analyzeLink()">Analyze Link</button>
-          <p class="link-result" id="linkResult"></p>
-        </div>
-      </div>
-  
-      <!-- BATCH -->
-      <div class="card">
-        <div class="card-content">
-          <h2>Application & File</h2>
-          <p>
-            Perform batch analysis on multiple files to detect manipulation at scale.
-          </p>
-  
-          <input type="file" id="batchInput" multiple hidden>
-          <button class="choose-btn"
-            onclick="document.getElementById('batchInput').click()">Choose Files</button>
-  
-          <button class="analyze-btn" onclick="analyzeBatch()">Start Batch Analysis</button>
-          <p class="batch-result" id="batchResult"></p>
-        </div>
-      </div>
-  
-    </div>
-  </section>
-  
-  <!-- ================= MODAL ================= -->
-  <div class="modal-overlay" id="mediaModal">
-    <div class="modal-box">
-      <button class="close-btn" onclick="closeModal()">✕</button>
-      <h2 class="modal-title">Media Verification</h2>
-  
-      <div class="type-selector">
-        <button class="type-btn active" onclick="selectType(this,'image')">Image</button>
-        <button class="type-btn" onclick="selectType(this,'video')">Video</button>
-        <button class="type-btn" onclick="selectType(this,'audio')">Audio</button>
-      </div>
-  
-      <div class="upload-section">
-        <input type="file" id="mediaInput" hidden>
-        <button class="choose-btn"
-          onclick="document.getElementById('mediaInput').click()">Choose File</button>
-        <button class="upload-btn" onclick="uploadMedia()">Upload</button>
-      </div>
-  
-      <div class="result-box" id="resultBox">
-        <p id="resultText">Analyzing...</p>
-      </div>
-    </div>
-  </div>
-  
-  <!-- ================= SCENARIOS ================= -->
-  <section class="third-slide">
-    <div class="third-header">
-      <h1>Different Deepfake Detection Online</h1>
-      <p>Real-world scenarios where Nexora helps identify fake content.</p>
-    </div>
-  
-    <div class="scenario-wrapper">
-      <div class="scenario-card">
-        <img src="img2.png">
-        <h3>Social Media Profile</h3>
-        <p class="risk high">89% Deepfake</p>
-      </div>
-  
-      <div class="scenario-card">
-        <img src="img3.png">
-        <h3>Parade Images</h3>
-        <p class="risk medium">45% Deepfake</p>
-      </div>
-  
-      <div class="scenario-card">
-        <img src="img4.png">
-        <h3>Financial Document</h3>
-        <p class="risk low">31% Deepfake</p>
-      </div>
-  
-      <div class="scenario-card">
-        <img src="img5.png">
-        <h3>Video Call</h3>
-        <p class="risk low">31% Deepfake</p>
-      </div>
-    </div>
-  </section>
-  
-  <!-- ================= HOW IT WORKS ================= -->
-  <section class="how-it-works" id="about">
-  
-    <div class="how-header">
-      <h1>How Nexora Detects Deepfakes</h1>
-      <p>A transparent AI workflow designed for trust and accuracy.</p>
-    </div>
-  
-    <div class="how-container">
-  
-      <div class="how-steps">
-        <div class="step-card"><span class="step-number">01</span><h3>Upload Media</h3></div>
-        <div class="step-card"><span class="step-number">02</span><h3>AI Analysis</h3></div>
-        <div class="step-card"><span class="step-number">03</span><h3>Authenticity Score</h3></div>
-        <div class="step-card"><span class="step-number">04</span><h3>Download or Share</h3></div>
-        <button class="how-cta">Try Detection Now →</button>
-      </div>
-  
-      <div class="how-visual">
-        <div class="visual-card">
-          <img src="deep face.png">
-          <div class="scan-line"></div>
-        </div>
-      </div>
-  
-    </div>
-  </section>
+  <div class="nav-left">
+    <div class="logo">
+  <img src="logo.png" alt="Nexora Logo">
+</div>
 
-  
-<section class="trust-section">
-    <div class="trust-header">
-      <h2>Why You Trust Nexora</h2>
+    <span class="site-name">UNMASK</span>
+  </div>
+
+  <ul class="nav-right">
+    <li><a href="#home">Home</a></li>
+
+    <li class="dropdown">
+      <a href="#tools">Tools</a>
+      <ul class="dropdown-menu">
+        <li><a href="#image-detection">Image Detection</a></li>
+        <li><a href="#video-detection">Video Detection</a></li>
+        <li><a href="#voice-detection">Voice Detection</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+
+     <!-- LOGIN BUTTON -->
+  <li>
+    <button class="nav-login-btn" onclick="openLoginModal()">
+  Login
+</button>
+
+  </li>
+  </ul>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+
+  <!-- Background Video -->
+  <video class="bg-video" autoplay muted loop playsinline>
+    <source src="bggift.mp4" type="video/mp4">
+  </video>
+
+  <!-- 🔥 DARK OVERLAY (NEW ADD) -->
+  <div class="hero-overlay"></div>
+
+  <!-- Content -->
+  <div class="hero-inner">
+    <div class="hero-content">
+      <h1>AI Deepfake Detection Online Free</h1>
       <p>
-        Built for accuracy, transparency, and privacy — Nexora helps people
-        confidently identify manipulated digital content.
+        Detect manipulated images, videos, audio, and documents using
+        Nexora’s AI-powered authenticity analyzer.
+      </p>
+
+      <div class="hero-buttons">
+        <button class="btn-primary" onclick="openModal()">
+          Analyze Media
+        </button>
+
+        <button class="btn-secondary" onclick="scrollToTools()">
+          View Demo
+        </button>
+      </div>
+    </div>
+
+    <div class="hero-image">
+  <img src="Deepfake.png" alt="Deepfake Detection" />
+  <span class="scan-ray"></span>
+</div>
+  </div>
+
+</section>
+
+
+<!-- ================= TOOLS ================= -->
+<section class="second-slide" id="tools">
+
+  <div class="sec-h1">
+    <h1>Deepfake Detection Tools</h1>
+  </div>
+
+  <div class="card-grid">
+
+    <!-- IMAGE -->
+    <div class="card" id="image-detection">
+      <div class="card-content">
+        <h2>Media Verification</h2>
+        <p>
+          Upload images, videos, audio, or documents such as PDF, DOC,
+          PNG, JPG, and JPEG to verify authenticity.
+        </p>
+        <button class="open-modal-btn" onclick="openModal()">Start Verification</button>
+      </div>
+    </div>
+
+    <!-- TEXT -->
+    <div class="card" id="video-detection">
+      <div class="card-content">
+        <h2>Message & Content Verification</h2>
+        <p>Analyze written messages and detect AI-generated content.</p>
+
+        <textarea class="text-input" id="textInput"
+          placeholder="Paste content here..."></textarea>
+
+        <button class="analyze-btn" onclick="analyzeText()">Analyze Content</button>
+        <p class="text-result" id="textResult"></p>
+      </div>
+    </div>
+
+    <!-- LINK -->
+    <div class="card" id="voice-detection">
+      <div class="card-content">
+        <h2>Web & Link Safety</h2>
+        <p>
+          Scan websites for phishing, fake content, and deepfake risks.
+        </p>
+
+        <input type="url" class="link-input" id="linkInput"
+          placeholder="Paste website link here">
+
+        <button class="analyze-btn" onclick="analyzeLink()">Analyze Link</button>
+        <p class="link-result" id="linkResult"></p>
+      </div>
+    </div>
+
+    <!-- BATCH -->
+    <div class="card">
+      <div class="card-content">
+        <h2>Application & File</h2>
+        <p>
+          Perform batch analysis on multiple files to detect manipulation at scale.
+        </p>
+
+        <input type="file" id="batchInput" multiple hidden>
+        <button class="choose-btn"
+          onclick="document.getElementById('batchInput').click()">Choose Files</button>
+
+        <button class="analyze-btn" onclick="analyzeBatch()">Start Batch Analysis</button>
+        <p class="batch-result" id="batchResult"></p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= MEDIA VERIFICATION MODAL ================= -->
+<div class="modal-overlay" id="mediaModal">
+  <div class="modal-box large">
+
+    <!-- Close -->
+    <button class="close-btn" onclick="closeModal()">✕</button>
+
+    <h2 class="modal-title">Media Verification</h2>
+    <p class="modal-subtitle">
+      Upload an image, video, or audio file to verify authenticity.
+    </p>
+
+    <!-- TYPE SELECTOR -->
+    <div class="type-selector">
+      <button class="type-btn active" onclick="selectType(this,'image')">Image</button>
+      <button class="type-btn" onclick="selectType(this,'video')">Video</button>
+      <button class="type-btn" onclick="selectType(this,'audio')">Audio</button>
+    </div>
+
+    <!-- UPLOAD -->
+    <div class="upload-section">
+      <input
+        type="file"
+        id="mediaInput"
+        hidden
+        onchange="handleFileSelect(this)"
+      >
+
+      <button
+        class="choose-btn"
+        onclick="document.getElementById('mediaInput').click()"
+      >
+        Choose File
+      </button>
+
+      <button class="upload-btn" onclick="uploadMedia()">
+        Start Analysis
+      </button>
+    </div>
+
+    <!-- FILE PREVIEW -->
+    <div class="file-preview" id="filePreview">
+      <span class="file-icon" id="fileIcon">📄</span>
+
+      <div class="file-info">
+        <p id="fileName">No file selected</p>
+        <small id="fileType"></small>
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div class="result-box" id="resultBox">
+      <p id="resultText">Analyzing...</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ================= SCENARIOS ================= -->
+<section class="third-slide">
+  <div class="third-header">
+    <h1>Different Deepfake Detection Online</h1>
+    <p>Real-world scenarios where Nexora helps identify fake content.</p>
+  </div>
+
+  <div class="scenario-wrapper">
+    <div class="scenario-card">
+      <img src="img2.png">
+      <h3>Social Media Profile</h3>
+      <p class="risk high">89% Deepfake</p>
+    </div>
+
+    <div class="scenario-card">
+      <img src="img3.png">
+      <h3>Parade Images</h3>
+      <p class="risk medium">45% Deepfake</p>
+    </div>
+
+    <div class="scenario-card">
+      <img src="img4.png">
+      <h3>Financial Document</h3>
+      <p class="risk low">31% Deepfake</p>
+    </div>
+
+    <div class="scenario-card">
+      <img src="img5.png">
+      <h3>Video Call</h3>
+      <p class="risk low">31% Deepfake</p>
+    </div>
+
+    
+
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<!-- ================= HOW IT WORKS ================= -->
+<section class="how-it-works" id="about">
+
+  <div class="how-header">
+    <h1>How Nexora Detects Deepfakes</h1>
+    <p>
+      A transparent AI-powered workflow that verifies images, videos,
+      audio, and documents with accuracy and explainability.
+    </p>
+  </div>
+
+  <div class="how-container">
+
+    <!-- LEFT STEPS -->
+    <div class="how-steps">
+
+      <div class="step-card">
+        <span class="step-number">01</span>
+        <h3>Upload Your Media</h3>
+        <p>
+          Upload images, videos, audio, PDFs, or documents.
+          Supported formats include JPG, PNG, MP4, MP3, PDF, and DOC.
+        </p>
+      </div>
+
+      <div class="step-card">
+        <span class="step-number">02</span>
+        <h3>AI Analysis Begins</h3>
+        <p>
+          Nexora scans facial inconsistencies, audio artifacts,
+          metadata, compression noise, and manipulation traces.
+        </p>
+      </div>
+
+      <div class="step-card">
+        <span class="step-number">03</span>
+        <h3>Get Authenticity Score</h3>
+        <p>
+          Receive a clear deepfake probability score with
+          explainable insights and confidence indicators.
+        </p>
+      </div>
+
+      <div class="step-card">
+        <span class="step-number">04</span>
+        <h3>Download or Share</h3>
+        <p>
+          Download reports or securely share results with
+          journalists, teams, or investigators.
+        </p>
+      </div>
+
+      <button class="how-cta" onclick="openModal()">
+  Try Deepfake Detection Now →
+</button>
+
+
+    </div>
+
+    <!-- RIGHT VISUAL -->
+    <div class="how-visual">
+      <div class="visual-card">
+        <img src="deep face.png" alt="AI Detection Preview">
+        <div class="scan-line"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="trust-section">
+  <div class="trust-header">
+    <h2>Why You Trust Nexora</h2>
+    <p>
+      Built for accuracy, transparency, and privacy — Nexora helps people
+      confidently identify manipulated digital content.
+    </p>
+  </div>
+
+  <div class="trust-grid">
+
+    <div class="trust-card">
+      <div class="trust-icon">👆</div>
+      <h3>Simple & Free to Use</h3>
+      <p>
+        Upload your file and get instant results — no sign-up, no ads, and no limits.
+        Designed for journalists, students, and everyday users.
       </p>
     </div>
-  
-    <div class="trust-grid">
-  
-      <div class="trust-card">
-        <div class="trust-icon">👆</div>
-        <h3>Simple & Free to Use</h3>
-        <p>
-          Upload your file and get instant results — no sign-up, no ads, and no limits.
-          Designed for journalists, students, and everyday users.
-        </p>
-      </div>
-  
-      <div class="trust-card">
-        <div class="trust-icon">📊</div>
-        <h3>Accurate & Explainable Results</h3>
-        <p>
-          Nexora doesn’t just flag deepfakes — it explains them with confidence scores,
-          visual indicators, and readable insights.
-        </p>
-      </div>
-  
-      <div class="trust-card">
-        <div class="trust-icon">🌍</div>
-        <h3>Real-World Context</h3>
-        <p>
-          Understand how fake content spreads in news, social media, and public platforms
-          with real-world use-case analysis.
-        </p>
-      </div>
-  
-      <div class="trust-card">
-        <div class="trust-icon">🛡️</div>
-        <h3>Privacy First</h3>
-        <p>
-          Your files are never stored. All analysis happens securely, and nothing leaves
-          your system without your permission.
-        </p>
-      </div>
-  
+
+    <div class="trust-card">
+      <div class="trust-icon">📊</div>
+      <h3>Accurate & Explainable Results</h3>
+      <p>
+        Nexora doesn’t just flag deepfakes — it explains them with confidence scores,
+        visual indicators, and readable insights.
+      </p>
     </div>
-  </section>
-  
-    <script src="script.js"></script>
+
+    <div class="trust-card">
+      <div class="trust-icon">🌍</div>
+      <h3>Real-World Context</h3>
+      <p>
+        Understand how fake content spreads in news, social media, and public platforms
+        with real-world use-case analysis.
+      </p>
+    </div>
+
+    <div class="trust-card">
+      <div class="trust-icon">🛡️</div>
+      <h3>Privacy First</h3>
+      <p>
+        Your files are never stored. All analysis happens securely, and nothing leaves
+        your system without your permission.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta-section">
+  <div class="cta-glow"></div>
+
+  <div class="cta-content">
+    <h2>Free Online Deepfake Detection at Your Fingertips</h2>
+    <p>
+      Start using Nexora’s deepfake detection tool today.
+      Fast, accurate, privacy-first — built for journalists, researchers,
+      and everyday users.
+    </p>
+
+    <button class="cta-btn" onclick="openModal()">
+  Try Deepfake Detection Now →
+</button>
+  </div>
+</section>
+
+<footer class="footer" id="contact">
+  <div class="footer-glow"></div>
+
+  <div class="footer-container">
+
+    <!-- Brand -->
+    <div class="footer-brand">
+      <h2> Nexora</h2>
+      <p>
+        Nexora is a free AI-powered tool that helps you identify
+        manipulated images, videos, and audio files to protect against
+        misinformation and fraud.
+      </p>
+    </div>
+
+    <!-- Tools -->
+    <div class="footer-links">
+      <h3>Tools</h3>
+      <a href="#image-detection">Image</a>
+      <a href="#video-detection">Video</a>
+      <a href="#voice-detection">Voice</a>
+    </div>
+
+    <!-- About -->
+    <div class="footer-links">
+      <h3>About</h3>
+      <a href="#about">How It Works</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-links">
+      <h3>Contact</h3>
+      <a href="mailto:hello@nexora.com">hello@nexora.com</a>
+
+      <div class="footer-icons">
+        <span>✉️</span>
+        <span>🌐</span>
+        <span>🔒</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Nexora. All rights reserved.
+  </div>
+</footer>
+
+<!-- ================= LOGIN MODAL ================= -->
+<div class="login-overlay" id="loginModal">
+  <div class="login-box">
+
+    <!-- Close -->
+    <button class="close-btn" onclick="closeLoginModal()">✕</button>
+
+    <h2>Sign in to UNMASK</h2>
+    <p>Continue securely using your Google account</p>
+
+    <!-- GOOGLE BUTTON -->
+    <button class="google-login-btn" onclick="continueWithGoogle()">
+      <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
+      Continue with Google
+    </button>
+
+    <small class="login-note">
+      We don’t store passwords. Secure OAuth login.
+    </small>
+
+  </div>
+</div>
+
+
+<!-- ================= JS ================= -->
+<script src="script.js"></script>
+
 </body>
 </html>
