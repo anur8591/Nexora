@@ -10,6 +10,8 @@ from fastapi.staticfiles import StaticFiles
 from openai import OpenAI
 from fpdf import FPDF
 
+
+
 # ---------------- CONFIG ----------------
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
